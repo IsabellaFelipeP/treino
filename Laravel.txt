@@ -1,0 +1,26 @@
+Artisan:
+
+1.Artisan Console -> Interfase que se utiliza dentro do terminal referente ao laravel.
+
+2.php artisan list -> para ver os comandos disponiveis para o artisan.
+
+3.key:generate -> gera uma chave nova para a aplicação.
+
+4.make -> criar arquivos já com o templet pronto.
+
+5.migrate -> são as migrações
+
+6.route -> visualizar as route
+
+7. php artisan help make: "controller ou palavra desejada" -> Caso não saiba fazer um controle, ao digitar ele irá mostrar uma explicação.
+
+8. php artisan instalar:client -> Gera o banco de dados, cria dentro das tabelas registro padrão pra parecer no sistema e ele cria pasta de estruturas que eu preciso que são individuais pra cada projeto baseado num banco de dados.
+
+9. artisan Config -> Configurar ele para trabalhar com seus cron job, definir 1 cron job que ele irá requisitar do laravel os comandos necessários.
+
+10. schedule -> dos comandos escrevendo o que precisa ser feito em php.
+
+
+Routes:
+
+1. crtl + p -> digitar o nome de qualquer arquivo e através disso ele acessa qualquer arquivo sem ter que suar a barra ao lado
