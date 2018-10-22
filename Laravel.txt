@@ -21,6 +21,7 @@ Artisan:
 10. schedule -> dos comandos escrevendo o que precisa ser feito em php.
 
 
+
 Routes:
 
 1. crtl + p -> digitar o nome de qualquer arquivo e através disso ele acessa qualquer arquivo sem ter que suar a barra ao lado.
@@ -94,3 +95,75 @@ Para setar o banco de dados:
 Ir no arquivo => ' .env '
 
 .env => Arquivo aonde cada um irá setar suas funções
+
+correção do erro da tabela de migração:
+# O problema estava nesse DB_HOST!
+# Ele estava DB_HOST = 127.0.0.1
+# Provavelmente na hora de instalar o Mysql aqui nesse pc
+# Ele veio com uma configuração que não aceita a conexão pelo IP
+# Ou nao estava reconhecendo que 127.0.0.1 é o mesmo que localhost
+# Dai o que eu fiz foi mudar para DB_HOST = localhost
+# e funcionou normal
+# então se tiver mais alguem com o mesmo problema
+# E o .env dessa pessoa estiver com 127.0.0.1
+# Muda pra localhost!!
+# Vou desconectar e nos falamos no slack se precisar eu acesso de novo
+
+
+1. php artisan migrate:rollback -> comando para voltar a migração, ou seja, volta a batch, conforme o numero de batch.
+
+2. php artisan make:migration create_cliente_table --create=clientes
+observação:
+O ' --create=clientes ', já vai preencher com o nome da tabela com schema preenchido.
+Ex:
+ Schema::create('clientes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+        }); 
+
+Ai depois inseri o campo desejado pelo cliente:
+ Schema::create('clientes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nome',60); -- passando 60 caractere como parametro para não deixar null.
+            $table->string('endereco'); -- se não setar nada, ele não pode ser nulo por padrão.
+            $table->integer('numero');
+            $table->timestamps();
+        });
+
+3. php artisan migrate -> para rodar a migração.
+
+4. php artisan make: model Cliente -> criando o model.
+
+Eloquent e Model:
+
+php artisan tinker -> interfase na linha de comando aonde eu posso acessar meu projeto pelo terminal.
+
+1. $cliente = new App\Cliente;  -> criei um cliente vazio.
+
+obs: preenchendo os dados do cliente vazio:
+$cliente->nome = 'Cliente 1';
+$cliente->endereco = 'Rua tal';
+$cliente->numero = '123';
+
+$cliente->save(); -- para salvar no banco de dados.
+
+2. Outro exemplo de caminho:
+$cliente = App\Cliente:: create (['nome' => 'Cliente 2', 'endereco' => 'Rua tal', 'numero' => '124']);
+
+3. Quando acontece a mensagem de erro é porque você está deixando o campo mais dinamico, mas também inseguro e para se proteger contra os usuarios a gente utiliza a variavel abaixo:
+Isso tem que estar dentro da class
+{
+protected $fillable = [
+        'nome',
+        'endereco',
+        'numero';
+    ];
+}
+
+4. Para fazer uma alteração/editar um cliente existente no tinker:
+
+$cliente2 = App\Cliente::find(2); -- executa;
+
+depois de executado:
+$cliente2 -> endereco = 'Endereco modificado';
+$cliente2-> save();
