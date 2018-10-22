@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.9 on 2018-10-22 20:07:59.
+ * Generated for Laravel 5.7.10 on 2018-10-22 20:54:34.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4894,6 +4894,22 @@ namespace Illuminate\Support\Facades {
         public static function put($path, $contents, $lock = false)
         {
             return \Illuminate\Filesystem\Filesystem::put($path, $contents, $lock);
+        }
+        
+        /**
+         * Write the contents of a file, replacing it atomically if it already exists.
+         * 
+         * This will also replace the target file permissions.
+         *
+         * @param string $path
+         * @param string $content
+         * @return void 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function replace($path, $content)
+        {
+            \Illuminate\Filesystem\Filesystem::replace($path, $content);
         }
         
         /**
@@ -9936,6 +9952,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Routing\Route permanentRedirect(string $uri, string $destination)
      * @method static \Illuminate\Routing\Route view(string $uri, string $view, array $data = [])
      * @method static void bind(string $key, string|callable $binder)
+     * @method static void model(string $key, string $class, \Closure|null $callback = null)
      * @method static \Illuminate\Routing\Route current()
      * @method static string|null currentRouteName()
      * @method static string|null currentRouteAction()

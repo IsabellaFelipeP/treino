@@ -20,7 +20,7 @@
                         </div>
                     @endif
 
-                     {!! Form::open(['url' => 'foo/bar']) !!}
+                     {!! Form::open()!!}
     
                         {!! Form::close() !!}
 
