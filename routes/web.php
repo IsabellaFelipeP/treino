@@ -11,11 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::any('usuarios', 'UsuariosController@index');
+
+Route::get('usuarios', 'UsuariosController@index');
+
+
+Route::group(['middleware' => 'web'], function (){
+    Route::get('/', 'HomeController@index'); /*Para ir direto pra home, para pag solitada */
+
+    Route::auth();
+    
+    Route::get('/home', 'HomeController@index');
+
+
+});
 
 
 

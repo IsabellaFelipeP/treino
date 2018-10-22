@@ -167,3 +167,12 @@ $cliente2 = App\Cliente::find(2); -- executa;
 depois de executado:
 $cliente2 -> endereco = 'Endereco modificado';
 $cliente2-> save();
+
+CRUD parte 1:
+
+Como colocar a autenticação novamente no sistema:
+
+php artisan
+-> make:auth  ou seja, o comando é:
+
+-> php artisan make:auth 
