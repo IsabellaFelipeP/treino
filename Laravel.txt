@@ -176,3 +176,17 @@ php artisan
 -> make:auth  ou seja, o comando é:
 
 -> php artisan make:auth 
+
+
+5.Inserir esse comando dentro do config, pasta app:
+Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, -> para que remova os amarelos, melhoria em otimização.
+
+6. cria o controller na pasta controller -> php artisan make:controller ClientesController
+Insere a função abaixo:
+public function index()
+   {
+        return view('clientes.lista');
+    }
+
+CRUD 2:
+"laravelcollective/html": "5.2*"

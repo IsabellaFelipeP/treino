@@ -11,10 +11,9 @@
 |
 */
 
-
-
 Route::get('usuarios', 'UsuariosController@index');
-
+Route::get('clientes', 'ClientesController@index');
+Route::get('clientes/novo', 'ClientesController@novo');
 
 Route::group(['middleware' => 'web'], function (){
     Route::get('/', 'HomeController@index'); /*Para ir direto pra home, para pag solitada */

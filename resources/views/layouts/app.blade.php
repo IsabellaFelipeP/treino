@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CRUD Básico') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -34,8 +34,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     <li><a href ="{{ url ('/') }}">Home </a></li>
+                    @if (Auth::guest())
                     <li><a href ="{{ url ('/clientes') }}">Clientes</a></li>
-
+                    @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
