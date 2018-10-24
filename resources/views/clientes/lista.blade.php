@@ -32,7 +32,9 @@
                                      <td>{{$clientes -> numero}}</td>
                                      <td>
                                         <a href="clientes/{{$clientes->id}}/editar" class = "btn btn-default btn-sm">Editar</a>
-                                        <button class = "btn btn-default btn-sm">Excluir</button>
+                                        {!!Form::open(['method' => 'DELETE', 'url' => '/Clientes'.$clientes->id, 'style' => 'display: inline;'])!!}
+                                        <button type = "submit" class = "btn btn-default btn-sm">Excluir</button>
+                                        {!!Form::close()!!}
                                 </tr>
                             @endforeach
                         </tbody>

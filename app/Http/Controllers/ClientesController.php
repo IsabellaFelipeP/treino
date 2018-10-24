@@ -45,6 +45,9 @@ class ClientesController extends Controller
 
             return Redirect::to('clientes/'.$cliente->id.'/editar');
         }
+        public function Deletar($id, Request $request){
 
+           
+        }
         
 }
