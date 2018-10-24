@@ -12,5 +12,4 @@ class cliente extends Model
         'numero'
  ];
  
-
 }

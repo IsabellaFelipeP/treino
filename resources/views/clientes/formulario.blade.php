@@ -14,15 +14,32 @@
                 </div>
 
                 <div class="card-body">
+                    @if(Session::has('mensagem_sucesso'))
+                        <div class = "alert alert-sucess" > {{Session::get('mensagem_sucesso')}} 
+                    @endif    
+                
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                     {!! Form::open()!!}
-    
-                        {!! Form::close() !!}
+                    @if(Request::is('*/editar'))
+                    {!!Form::model($cliente, ['method' => 'PATCH', 'url' => 'clientes/'.$cliente->id])!!}
+
+                    @else
+                    {!! Form::open(['url' => 'clientes/salvar'])!!}
+                    @endif
+                   
+                      {!!Form::label('nome', 'Nome') !!}
+                      {!! Form::input ('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome'])!!}
+                      {!!Form::label('endereco', 'Endereço') !!}
+                      {!! Form::input ('text', 'endereco', null, ['class' => 'form-control', '', 'placeholder' => 'Endereço'])!!}
+                      {!!Form::label('numero', 'Número') !!}
+                      {!! Form::input ('text', 'numero', null, ['class' => 'form-control', '', 'placeholder' => 'Número'])!!}
+                        <br>
+                      {!!Form::submit('Salvar', ['class' => 'btn btn-primary'])!!}
+                    {!! Form::close() !!} </br>
 
                 </div>
             </div>

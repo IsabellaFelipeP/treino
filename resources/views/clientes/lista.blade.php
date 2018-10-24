@@ -16,7 +16,29 @@
                         </div>
                     @endif
 
-                   Listagem de Clientes
+                    <div class = "panel-body">
+                     <table class = "table">
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Número</th>
+                        <th>Ações</th>
+                        <tbody>
+                            
+                            @foreach($clientes as $clientes)
+
+                                <tr>
+                                     <td>{{$clientes -> nome}}</td>
+                                     <td>{{$clientes -> endereco}}</td>
+                                     <td>{{$clientes -> numero}}</td>
+                                     <td>
+                                        <a href="clientes/{{$clientes->id}}/editar" class = "btn btn-default btn-sm">Editar</a>
+                                        <button class = "btn btn-default btn-sm">Excluir</button>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    </div>
+
                 </div>
             </div>
         </div>
