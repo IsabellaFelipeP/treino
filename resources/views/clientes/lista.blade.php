@@ -10,6 +10,10 @@
                 </div>
 
                 <div class="card-body">
+                    @if(Session::has('mensagem_sucesso'))
+                        <div class = "alert alert-sucess" > {{Session::get('mensagem_sucesso')}} 
+                    @endif 
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -32,7 +36,7 @@
                                      <td>{{$clientes -> numero}}</td>
                                      <td>
                                         <a href="clientes/{{$clientes->id}}/editar" class = "btn btn-default btn-sm">Editar</a>
-                                        {!!Form::open(['method' => 'DELETE', 'url' => '/Clientes'.$clientes->id, 'style' => 'display: inline;'])!!}
+                                        {!!Form::open(['method' => 'DELETE', 'url' => '/clientes/'.$clientes->id, 'style' => 'display: inline'])!!}
                                         <button type = "submit" class = "btn btn-default btn-sm">Excluir</button>
                                         {!!Form::close()!!}
                                 </tr>
